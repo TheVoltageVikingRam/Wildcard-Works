@@ -4,6 +4,11 @@
 
 -----
 
+### 📹 Demo Video
+
+[![Watch the video](https://img.shields.io/badge/Watch-Video-blue)](https://drive.google.com/file/d/1dwYv9QqkCEuEoeAFwyfsn6z3Ukuloxz3/view?usp=drivesdk)
+
+-----
 ### Project Overview
 
 This project provides a fundamental embedded systems example on the **STM32 Nucleo-F446RE development board**. It highlights **bare-metal register programming** to control an on-board LED, demonstrating direct hardware interaction without relying on abstraction layers like HAL or LL libraries. This approach is excellent for showcasing a deep understanding of microcontroller peripherals in an embedded software portfolio.
@@ -114,8 +119,3 @@ The code directly interacts with the STM32F446RE's peripherals by accessing thei
               * Setting the `LED_PIN` bit (bit 5) in the lower half of `BSRR` turns the LED ON.
               * Setting bit `21` (which is `LED_PIN + 16` for the reset section) in the upper half of `BSRR` turns the LED OFF.
 
------
-
-### 📹 Demo Video
-
-[![Watch the video](https://img.shields.io/badge/Watch-Video-blue)](https://drive.google.com/file/d/1dwYv9QqkCEuEoeAFwyfsn6z3Ukuloxz3/view?usp=drivesdk)
