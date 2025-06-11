@@ -116,16 +116,6 @@ The code directly interacts with the STM32F446RE's peripherals by accessing thei
 
 -----
 
-### Demonstration
+### 📹 Demo Video
 
------
-
-### Contribution
-
-Feel free to explore, fork, and contribute to this repository.
-
------
-
-### License
-
-## This project is open-source and available under the [MIT License](https://www.google.com/search?q=LICENSE).
+[![Watch the video](https://img.shields.io/badge/Watch-Video-blue)](https://drive.google.com/file/d/1dwYv9QqkCEuEoeAFwyfsn6z3Ukuloxz3/view?usp=drivesdk)
