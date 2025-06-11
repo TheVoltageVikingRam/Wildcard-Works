@@ -1,1 +1,51 @@
-STM32F446RE Bare-Metal LED BlinkThis project is a fundamental "Hello, World!" example for embedded systems development. It's a simple, bare-metal C program that blinks the user LED on an STM32 Nucleo-64 F446RE development board by directly manipulating hardware registers.HardwareBoard: STMicroelectronics NUCLEO-F446REMCU: STM32F446RELED: The green user LED, which is connected to Port A, Pin 5 (PA5).How It WorksThis program avoids using high-level libraries like HAL or LL from STMicroelectronics. Instead, it interacts directly with the microcontroller's memory-mapped registers to configure and control the GPIO pin.The core logic involves three main steps:Enable GPIO Clock: Before a peripheral like a GPIO port can be used, its clock must be enabled. We do this by setting the appropriate bit for GPIOA in the RCC (Reset and Clock Control) AHB1 enable register (RCC_AHB1ENR).Configure Pin Mode: We need to set pin PA5 as a general-purpose output. This is done by writing the correct bit pattern (01) to the corresponding bits (11:10) in the GPIOA Mode Register (GPIOA_MODER).Toggle the LED: Inside an infinite while loop, the program repeatedly sets the pin high (turning the LED on) and then low (turning it off) using the GPIOA Output Data Register (GPIOA_ODR). A simple delay loop is used to create a visible blinking effect.DemonstrationHere is a quick look at the final result: the user LED on the Nucleo board blinking steadily.(Placeholder: Insert your blinking LED GIF here)Building and RunningTo build and flash this project, you will need an ARM cross-compiler toolchain and a flashing utility.Toolchain: GNU Arm Embedded Toolchain (arm-none-eabi-gcc)Flashing Utility: STM32CubeProgrammer or st-flash.Compile the source code to generate an ELF or BIN file, and then use your chosen utility to flash the binary onto the Nucleo board via its built-in ST-LINK debugger.
+# STM32F446RE Bare-Metal LED Blink
+
+This project is a fundamental **"Hello, World!"** example for embedded systems development. It demonstrates a simple **bare-metal C** program that blinks the user LED on an **STM32 Nucleo-64 F446RE** development board by directly manipulating hardware registers.
+
+---
+
+## 🛠 Hardware
+
+- **Board:** STMicroelectronics NUCLEO-F446RE  
+- **MCU:** STM32F446RE  
+- **User LED:** Green LED connected to **Port A, Pin 5 (PA5)**  
+
+---
+
+## ⚙️ How It Works
+
+This program **does not use any HAL or LL libraries** provided by STMicroelectronics. Instead, it interacts **directly with memory-mapped registers** of the microcontroller.
+
+### Core Logic:
+
+1. **Enable GPIO Clock**  
+   Set the appropriate bit in the **RCC_AHB1ENR** register to enable the clock for **GPIOA**.
+
+2. **Configure Pin Mode**  
+   Set **PA5** as a general-purpose output by configuring the **GPIOA_MODER** register (bits 11:10) to `01`.
+
+3. **Toggle the LED**  
+   Inside an infinite loop, toggle the **GPIOA_ODR** register to turn the LED ON and OFF. A crude delay loop provides the visible blinking effect.
+
+---
+
+## 🎥 Demonstration
+
+> *(Insert your blinking LED GIF or video here for visual reference)*
+
+---
+
+## 🔧 Building and Flashing
+
+### Requirements
+
+- **Toolchain:** [GNU Arm Embedded Toolchain](https://developer.arm.com/downloads/-/gnu-rm) (`arm-none-eabi-gcc`)
+- **Flashing Utility:** 
+  - [STM32CubeProgrammer](https://www.st.com/en/development-tools/stm32cubeprog.html)  
+  - or `st-flash` (from [stlink](https://github.com/stlink-org/stlink) utilities)
+
+### Build Steps
+
+1. Compile the source:
+   ```bash
+   arm-none-eabi-gcc -mcpu=cortex-m4 -mthumb -nostdlib -T linker_script.ld -o blink.elf main.c
