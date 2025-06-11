@@ -1,111 +1,144 @@
----
-## README.md for STM32F4 Discovery Board LED Control (STM32CubeIDE)
+-----
 
-This project demonstrates a basic input/output operation on an **STM32F4 Discovery board**. It controls an on-board LED (connected to **PA5**) using a user button (connected to **PC13**).
+## README.md for STM32 Nucleo-F446RE LED & Button Control
 
----
+-----
+
+### Project Title: STM32 Nucleo-F446RE LED & Button Control (Bare-Metal Register Programming)
+
+-----
+
+### Overview
+
+This project showcases a fundamental embedded systems application on the **STM32 Nucleo-F446RE development board**. It demonstrates direct hardware manipulation through **bare-metal register programming** to control an on-board LED based on the state of a user button. This approach highlights a deep understanding of microcontroller peripherals, making it a strong addition to an embedded software portfolio.
+
+-----
+
 ### Features
 
-* Turns the LED on when the user button is pressed.
-* Turns the LED off when the user button is released.
+  * **Bare-Metal Register Programming**: Directly configures GPIO ports by manipulating microcontroller registers (e.g., `RCC->AHB1ENR`, `GPIOA->MODER`, `GPIOC->IDR`, `GPIOA->BSRR`).
+  * **On-Board LED Control**: Toggles the **Green LED (LD2)** on the Nucleo-F446RE board.
+  * **User Button Input**: Reads the state of the **User Button (B1)** to control the LED.
+  * **Simple Logic**: The LED turns ON when the button is pressed and OFF when the button is released.
 
----
-### Hardware Requirements
+-----
 
-* STM32F4 Discovery Board
+### Hardware Used
 
----
-### Software Requirements
+  * **STM32 Nucleo-F446RE Development Board**
 
-* **STM32CubeIDE** (Version 1.x.x or later)
+-----
 
----
+### Software Used
+
+  * **STM32CubeIDE** (Version 1.x.x or later) - Used for project setup, compilation, and flashing.
+  * **ARM-compatible toolchain** (integrated within STM32CubeIDE).
+
+-----
+
 ### Pin Configuration
 
-* **LED (Green)**: Connected to **PA5**
-* **User Button (Blue)**: Connected to **PC13**
+On the STM32 Nucleo-F446RE board:
 
----
-### How to Use with STM32CubeIDE
+  * **Green LED (LD2)**: Connected to **PA5**
+  * **User Button (B1)**: Connected to **PC13**
+
+-----
+
+### How to Build & Flash with STM32CubeIDE
 
 1.  **Create a New STM32 Project**:
-    * Open STM32CubeIDE and go to `File > New > STM32 Project`.
-    * Select your target board (e.g., `STM32F407G-DISC` for the STM32F4 Discovery board) and click `Next`.
-    * Give your project a name (e.g., `LED_Button_Control`) and click `Finish`. This will generate a new project with a default configuration.
+    Open STM32CubeIDE. Go to `File > New > STM32 Project`. In the "Board Selector" tab, search for and select `NUCLEO-F446RE`. Provide a project name (e.g., `Nucleo_LED_Button_BareMetal`) and click `Finish`. You can close the Device Configuration Tool (`.ioc` file) if it opens.
 
-2.  **Copy the Code**:
-    * Once the project is created and the `Device Configuration Tool` opens, you can close it for this simple example, as we're directly manipulating registers.
-    * Navigate to the `Core/Src` folder in your Project Explorer and open `main.c`.
-    * **Replace the entire content of `main.c`** with the provided code.
+2.  **Integrate the Code**:
+    Navigate to the `Core/Src` folder in your Project Explorer and open `main.c`. **Replace the entire content of `main.c`** with the following code:
 
-3.  **Build the Project**:
-    * Click on the **hammer icon** (Build) in the toolbar or go to `Project > Build Project`. STM32CubeIDE will compile your code. You should see "Build Finished" in the console without errors.
-
-4.  **Flash the Microcontroller**:
-    * Ensure your STM32F4 Discovery board is connected to your PC via USB.
-    * Click on the **green play button** (Run) in the toolbar or go to `Run > Debug` (this will automatically build and flash if not already done).
-    * Confirm the debugger settings if prompted (usually the default ST-Link settings are correct).
-    * The code will be programmed onto your board, and it will start executing.
-
----
-### Code Explanation
-
-#### Includes and Defines
-
-* `#include "stm32f4xx.h"`: Includes the necessary header file for STM32F4 series microcontrollers, providing access to peripheral registers.
-* `#define GPIOAEN (1U<<0)`: Defines a bit mask to enable the clock for GPIO Port A.
-* `#define GPIOCEN (1U<<2)`: Defines a bit mask to enable the clock for GPIO Port C.
-* `#define PIN5 (1U<<5)`: Defines a bit mask for Pin 5.
-* `#define PIN13 (1U<<13)`: Defines a bit mask for Pin 13.
-* `#define LED_PIN PIN5`: Assigns `PIN5` to `LED_PIN` for clarity.
-* `#define BTN_PIN PIN13`: Assigns `PIN13` to `BTN_PIN` for clarity.
-
-#### `main` function
-
-1.  **Enable Clock Access**:
     ```c
-    RCC->AHB1ENR |=GPIOCEN; // Enable clock for GPIOC
-    RCC->AHB1ENR |=GPIOAEN; // Enable clock for GPIOA
-    ```
-    This step is crucial as **peripheral clocks must be enabled** before you can configure or use them. The `RCC->AHB1ENR` register controls the clock enable for GPIO ports on the AHB1 bus.
+    #include "stm32f4xx.h"
 
-2.  **Configure PA5 as Output**:
-    ```c
-    GPIOA->MODER |=(1U<<10);  // Set bit 10
-    GPIOA->MODER &=~(1U<<11); // Clear bit 11
-    ```
-    The **`MODER`** (Mode Register) for a GPIO port controls the pin's operating mode (input, general-purpose output, alternate function, analog). For PA5:
-    * Bits `MODER5[1:0]` (i.e., bits 11 and 10) control the mode of PA5.
-    * Setting `MODER5[1:0]` to `01` (binary) configures the pin as a general-purpose output.
+    #define GPIOAEN         (1U<<0)
+    #define GPIOCEN         (1U<<2)
 
-3.  **Configure PC13 as Input**:
-    ```c
-    GPIOC->MODER &=~ (1U<<26); // Clear bit 26
-    GPIOC->MODER &=~ (1U<<27); // Clear bit 27
-    ```
-    For PC13:
-    * Bits `MODER13[1:0]` (i.e., bits 27 and 26) control the mode of PC13.
-    * Setting `MODER13[1:0]` to `00` (binary) configures the pin as a general-purpose input.
+    #define PIN5            (1U<<5)
+    #define PIN13           (1U<<13)
 
-4.  **Main Loop**:
-    ```c
-    while(1)
+    #define LED_PIN         PIN5
+    #define BTN_PIN         PIN13
+
+
+    int main(void)
     {
-        if (GPIOC->IDR & BTN_PIN){
-            GPIOA->BSRR = LED_PIN;
-        }
-        else{
-            GPIOA->BSRR = (1U<<21);
+        /*Enable clock access to GPIOA and GPIOC */
+        RCC->AHB1ENR |= GPIOCEN;
+        RCC->AHB1ENR |= GPIOAEN;
+
+        /*Set PA5 as output pin (for LD2 Green LED)*/
+        // Clear bits 11 and 10, then set bit 10 for Output mode (01)
+        GPIOA->MODER &= ~(1U<<11);
+        GPIOA->MODER |= (1U<<10);
+
+        /*Set PC13 as Input pin (for User Button B1)*/
+        // Clear bits 27 and 26 for Input mode (00)
+        GPIOC->MODER &= ~(1U<<26);
+        GPIOC->MODER &= ~(1U<<27);
+
+        while(1)
+        {
+            /** Check if button is pressed **/
+            // The on-board User Button (B1) on Nucleo boards is typically active-low.
+            // This means PC13 reads LOW (0) when pressed, and HIGH (1) when released.
+            if ( !(GPIOC->IDR & BTN_PIN) ) { // If button is pressed (PC13 is LOW)
+                /*Turn on LED*/
+                GPIOA->BSRR = LED_PIN; // Set PA5 (turns LED ON)
+            }
+            else {
+                /*Turn off LED*/
+                // To reset a bit using BSRR, you write to the upper 16 bits (bit_position + 16)
+                GPIOA->BSRR = (1U<<(LED_PIN + 16)); // Reset PA5 (turns LED OFF)
+            }
         }
     }
     ```
-    * `GPIOC->IDR & BTN_PIN`: Reads the **Input Data Register (IDR)** of GPIOC. If the `BTN_PIN` (PC13) bit is set (meaning the button is pressed and the pin is high, assuming a pull-up resistor on the button, which is the case for the on-board user button), the condition is true.
-    * `GPIOA->BSRR = LED_PIN;`: If the button is pressed, the **Bit Set/Reset Register (BSRR)** of GPIOA is used to set the `LED_PIN` (PA5) to high, turning the LED ON.
-    * `GPIOA->BSRR = (1U<<21);`: If the button is not pressed, the `BSRR` is used to reset the `LED_PIN` (PA5) to low, turning the LED OFF. Note that the bit to reset PA5 is at position `5 + 16 = 21` in the BSRR register.
 
----
-### License
+3.  **Build the Project**:
+    Connect your Nucleo-F446RE board to your PC via USB. In STM32CubeIDE, click on the **hammer icon** (Build) in the toolbar, or go to `Project > Build Project`.
 
-This project is open-source and available under the MIT License.
+4.  **Flash the Microcontroller**:
+    Click on the **green play button** (Run) in the toolbar, or go to `Run > Debug`. This will automatically program your board with the compiled code.
 
----
+-----
+
+### Code Explanation (Bare-Metal)
+
+This project directly configures the STM32F446RE's General Purpose Input/Output (GPIO) and Reset and Clock Control (RCC) peripherals by accessing their memory-mapped registers.
+
+1.  **`#include "stm32f4xx.h"`**: Includes the standard peripheral header file for the STM32F4 series, providing access to register definitions.
+
+2.  **Define Bit Masks**: Macros like `GPIOAEN`, `GPIOCEN`, `PIN5`, `PIN13`, `LED_PIN`, and `BTN_PIN` are used to provide clear, named bit positions for register manipulation.
+
+3.  **`main` Function**:
+
+      * **Enable Peripheral Clocks (`RCC->AHB1ENR`)**: Before using any GPIO port, its corresponding clock must be enabled in the Reset and Clock Control (RCC) peripheral. `AHB1ENR` controls clocks for peripherals on the AHB1 bus.
+
+      * **Configure PA5 as Output (`GPIOA->MODER`)**: The `MODER` (Mode Register) for each GPIO port consists of two bits per pin. For PA5, bits 11 and 10 of `GPIOA->MODER` are set to `01` (binary) to configure it as a General Purpose Output pin for the LD2 LED.
+
+      * **Configure PC13 as Input (`GPIOC->MODER`)**: For PC13, bits 27 and 26 of `GPIOC->MODER` are set to `00` (binary) to configure it as a General Purpose Input pin for the User Button (B1). The Nucleo board's User Button on PC13 typically uses an internal pull-up, making it active-low.
+
+      * **Main Loop (`while(1)`)**:
+
+          * **`!(GPIOC->IDR & BTN_PIN)`**: Reads the **Input Data Register (IDR)** of GPIOC. Since the Nucleo user button is active-low (reads 0 when pressed), the `!` operator makes the `if` condition true when the button is pressed.
+          * **`GPIOA->BSRR = LED_PIN;`**: If the button is pressed, the **Bit Set/Reset Register (BSRR)** of GPIOA is used to set `PA5` high, turning the LED ON.
+          * **`GPIOA->BSRR = (1U<<(LED_PIN + 16));`**: If the button is not pressed, the `BSRR` is used to reset `PA5` low, turning the LED OFF. The `BSRR` is divided into two 16-bit halves: bits `0-15` for setting pins and bits `16-31` for resetting pins.
+
+-----
+
+### Video Demonstration
+
+See the LED toggling in action on the STM32 Nucleo-F446RE board\!
+
+[](https://www.google.com/search?q=https://www.youtube.com/watch%3Fv%3DYOUR_VIDEO_ID)
+*Click the image above to watch the video demonstration.*
+
+
+
+-----
