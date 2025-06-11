@@ -31,8 +31,7 @@ This program **does not use any HAL or LL libraries** provided by STMicroelectro
 
 ## 🎥 Demonstration
 
-> *(Insert your blinking LED GIF or video here for visual reference)*
-
+> [![Blinking LED Demo](https://via.placeholder.com/400x200.png?text=View+GIF)](https://drive.google.com/file/d/1dncVYLXKyS7a2w23sBotAOIPoXEAzlIN/view?usp=drivesdk)
 ---
 
 Building and Running with STM32CubeIDE
