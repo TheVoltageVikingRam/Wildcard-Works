@@ -55,49 +55,43 @@ On the STM32 Nucleo-F446RE board:
 
     ```c
     #include "stm32f4xx.h"
-
-    #define GPIOAEN         (1U<<0)
-    #define GPIOCEN         (1U<<2)
-
-    #define PIN5            (1U<<5)
-    #define PIN13           (1U<<13)
-
-    #define LED_PIN         PIN5
-    #define BTN_PIN         PIN13
+#define GPIOAEN			(1U<<0)
+#define GPIOCEN			(1U<<2)
+#define PIN5			(1U<<5)
+#define PIN13			(1U<<13)
+#define LED_PIN			PIN5
+#define BTN_PIN			PIN13
 
 
-    int main(void)
-    {
-        /*Enable clock access to GPIOA and GPIOC */
-        RCC->AHB1ENR |= GPIOCEN;
-        RCC->AHB1ENR |= GPIOAEN;
+int main(void)
+{	/*Enable clock access to GPIOA and GPIOC */
+	RCC->AHB1ENR |=GPIOCEN;
+	RCC->AHB1ENR |=GPIOAEN;
 
-        /*Set PA5 as output pin (for LD2 Green LED)*/
-        // Clear bits 11 and 10, then set bit 10 for Output mode (01)
-        GPIOA->MODER &= ~(1U<<11);
-        GPIOA->MODER |= (1U<<10);
+	/*Set PA5 as output pin*/
 
-        /*Set PC13 as Input pin (for User Button B1)*/
-        // Clear bits 27 and 26 for Input mode (00)
-        GPIOC->MODER &= ~(1U<<26);
-        GPIOC->MODER &= ~(1U<<27);
+	GPIOA->MODER |=(1U<<10);
+	GPIOA->MODER &=~(1U<<11);
 
-        while(1)
-        {
-            /** Check if button is pressed **/
-            // The on-board User Button (B1) on Nucleo boards is typically active-low.
-            // This means PC13 reads LOW (0) when pressed, and HIGH (1) when released.
-            if ( !(GPIOC->IDR & BTN_PIN) ) { // If button is pressed (PC13 is LOW)
-                /*Turn on LED*/
-                GPIOA->BSRR = LED_PIN; // Set PA5 (turns LED ON)
-            }
-            else {
-                /*Turn off LED*/
-                // To reset a bit using BSRR, you write to the upper 16 bits (bit_position + 16)
-                GPIOA->BSRR = (1U<<(LED_PIN + 16)); // Reset PA5 (turns LED OFF)
-            }
-        }
-    }
+	/*Set PC13 as Input pin*/
+	GPIOC->MODER &=~ (1U<<26);
+	GPIOC->MODER &=~ (1U<<27);
+
+	while(1)
+	{	/** Check if button is pressed **/
+		if (GPIOC->IDR & BTN_PIN){
+		/*Turn on LED*/
+		GPIOA->BSRR = LED_PIN;
+
+		}
+		else{
+		/*Turn off LED*/
+		GPIOA->BSRR = (1U<<21);
+
+		}
+
+	}
+}
     ```
 
 3.  **Build the Project**:
