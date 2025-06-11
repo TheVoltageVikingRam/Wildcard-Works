@@ -1,5 +1,5 @@
-Author: Ram Tripathi
-Board: STM32 Nucleo F446RE
+// Author: Ram Tripathi
+// Board: STM32 Nucleo F446RE
 
 // Where is the LED connected?
 // Port: A
