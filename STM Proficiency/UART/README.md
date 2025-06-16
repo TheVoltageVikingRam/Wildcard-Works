@@ -30,7 +30,3 @@ This project demonstrates UART transmission using direct register-level programm
 
 📸  
 ![String Transmission](print_multiple_char.png)
-
----
-
-## 🗂️ File Structure
