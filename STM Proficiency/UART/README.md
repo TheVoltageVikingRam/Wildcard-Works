@@ -18,7 +18,7 @@ This project demonstrates UART transmission using direct register-level programm
 - Demonstrates direct UART data register writing (`uart2_write()`).
 - Each character is sent manually using a loop or function call.
 
-📸 *Placeholder for screenshot of terminal showing individual characters being transmitted:*  
+📸 
 ![Character Transmission](Transmit_to_terminal.png)
 
 ---
@@ -28,7 +28,7 @@ This project demonstrates UART transmission using direct register-level programm
 - Demonstrates `printf()` redirection to UART via `__io_putchar()`.
 - Transmits full strings repeatedly in a loop.
 
-📸 *Placeholder for screenshot of terminal showing full string transmission:*  
+📸  
 ![String Transmission](print_multiple_char.png)
 
 ---
