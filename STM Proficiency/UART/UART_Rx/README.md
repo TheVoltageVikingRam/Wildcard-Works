@@ -4,7 +4,7 @@ A bare-metal firmware project for the STM32F446RE microcontroller that demonstra
 
 ## 📽️ Demo
 
-[![Watch the Demo](https://img.shields.io/badge/Video-Demo-blue?style=for-the-badge&logo=youtube)](https://drive.google.com/file/d/your-drive-link-here/view)
+[![Watch the Demo](https://img.shields.io/badge/Video-Demo-blue?style=for-the-badge&logo=youtube)](https://drive.google.com/file/d/1fP_DnHz6okUno-QFGKiKjv8HyFzNTVFR/view?usp=drivesdk)
 
 ## 🚀 Overview
 
