@@ -51,13 +51,3 @@ The plotter is controlled using an **Arduino Uno** and a **CNC Shield**, driving
 3. Upload GRBL firmware to Arduino Uno using Arduino IDE.
 4. Use Universal G-code Sender to send the G-code to Arduino via USB.
 5. The CNC Plotter writes/draws the content by moving the pen with precision.
-
----
-
-## 📸 Images
-
-> *(Add actual images/screenshots of the machine and output results here)*
-
----
-
-## 📂 Folder Structure
