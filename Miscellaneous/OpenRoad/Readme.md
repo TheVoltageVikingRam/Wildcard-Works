@@ -1,8 +1,7 @@
 
 # # OpenROAD Build (WSL2 - Ubuntu)
 
-This repository contains a working log and build instructions for compiling [OpenROAD](https://github.com/The-OpenROAD-Project/OpenROAD) completely from source inside **WSL2 (Ubuntu)**, **without Docker**. This setup is designed for **offline builds**—ideal for EDA toolchains in environments like **Cadence Virtuoso** without internet access.
-
+This repository contains a working log and build instructions for compiling [OpenROAD](https://github.com/The-OpenROAD-Project/OpenROAD) completely from source inside **WSL2 (Ubuntu)**, **without Docker**. 
 ---
 
 ## ✅ System Configuration
