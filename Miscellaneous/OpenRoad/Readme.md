@@ -84,11 +84,3 @@ Common issues resolved by the dependency installer:
 - spdlog compilation errors
 - Boost library issues
 
-For other problems, check the build logs or consult the OpenROAD project documentation.
-
-## Notes
-
-- All builds are performed locally (no internet required after cloning)
-- Tested working in offline environments with Virtuoso
-- Build time varies based on your system resources
-```
