@@ -1,65 +1,36 @@
+# 🛠️ OpenROAD in WSL2 — Working Build Guide
+
+This repository documents a **fully working installation of [OpenROAD](https://github.com/The-OpenROAD-Project/OpenROAD-flow-scripts)** inside **WSL2 Ubuntu** on a Windows machine.
+
+> ✅ Built from source  
+> ✅ Verified with 20-thread compilation  
+> ✅ WSL2 resource-tuned  
+> ✅ No Docker, no container mess  
+
 ---
 
-# OpenROAD in WSL2
+## 💻 System Specs
 
-This repository documents the successful installation and build of the [OpenROAD](https://github.com/The-OpenROAD-Project/OpenROAD-flow-scripts) toolchain inside **WSL2 (Ubuntu)** on a Windows machine.
+| Component       | Info             |
+|----------------|------------------|
+| Host OS        | Windows 11       |
+| WSL Distro     | Ubuntu 22.04     |
+| RAM            | 16 GB            |
+| CPU            | 8 cores          |
+| Storage        | 50 GB+ SSD       |
 
-## ✅ System
+---
 
-- OS: Windows 11 with WSL2
-- Distro: Ubuntu (WSL)
-- RAM: 16 GB
-- CPU: 8 cores
+## 🚀 Step-by-Step Setup
 
-## 🚀 What Worked
-
-### 1. Cloning the Repository
+### 1. Clone the OpenROAD Flow Scripts
 
 ```bash
 git clone https://github.com/The-OpenROAD-Project/OpenROAD-flow-scripts.git
 cd OpenROAD-flow-scripts
 
-2. Installing Dependencies
-
+---
+##
 cd etc
 sudo ./DependencyInstaller.sh -all
 cd ..
-
-3. Setting Up Python Environment
-
-python3 -m venv openroad-env
-source openroad-env/bin/activate
-
-4. Building OpenROAD
-
-./build_openroad.sh --local
-
-> This compiled OpenROAD successfully. Binaries are located in: tools/install/OpenROAD/bin/openroad
-
-
-
-
----
-
-🧪 Testing
-
-To confirm installation:
-
-tools/install/OpenROAD/bin/openroad -version
-
-
----
-
-🛠 Notes
-
-All dependencies were installed using the official DependencyInstaller.sh -all
-
-No internet access was needed from within VirtualBox for Cadence Virtuoso workflows
-
-
-
----
-
-👨‍💻 Maintained By
-
-Ram Tripathi
