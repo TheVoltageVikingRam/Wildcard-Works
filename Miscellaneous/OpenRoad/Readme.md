@@ -18,12 +18,7 @@ This repository contains a working log and build instructions for compiling [Ope
 
 ## 📦 Step-by-Step Build Instructions
 
-### 1. Clone OpenROAD Flow Scripts
 
-```bash
-git clone https://github.com/The-OpenROAD-Project/OpenROAD-flow-scripts.git
-cd OpenROAD-flow-scripts
-```
 ## Installation Steps
 
 ### 1. Clone the Flow Scripts
