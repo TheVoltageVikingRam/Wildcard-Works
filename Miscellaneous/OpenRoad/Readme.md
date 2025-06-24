@@ -23,7 +23,7 @@ This repository contains a working log and build instructions for compiling [Ope
 ```bash
 git clone https://github.com/The-OpenROAD-Project/OpenROAD-flow-scripts.git
 cd OpenROAD-flow-scripts
-
+```
 ## Installation Steps
 
 ### 1. Clone the Flow Scripts
