@@ -1,15 +1,28 @@
 ```markdown
-# OpenROAD Build in WSL2 (Ubuntu)
+# # OpenROAD Build (WSL2 - Ubuntu)
 
-This document provides working instructions for building OpenROAD completely from source inside WSL2 (Ubuntu) without Docker.
+This repository contains a working log and build instructions for compiling [OpenROAD](https://github.com/The-OpenROAD-Project/OpenROAD) completely from source inside **WSL2 (Ubuntu)**, **without Docker**. This setup is designed for **offline builds**—ideal for EDA toolchains in environments like **Cadence Virtuoso** without internet access.
 
-## System Requirements
+---
 
-- **Host OS**: Windows 11 with WSL2
-- **Guest OS**: Ubuntu 22.04 on WSL
-- **Hardware**: 16 GB RAM, 8 CPU cores recommended
-- **Network**: Works offline (tested for Virtuoso use case)
-- **All builds done locally**
+## ✅ System Configuration
+
+- **Host OS:** Windows 11 with WSL2
+- **WSL Distro:** Ubuntu 22.04
+- **RAM:** 16 GB  
+- **CPU Cores:** 8  
+- **Internet:** Not available inside VM  
+- **Use Case:** Offline OpenROAD build for Virtuoso workflows
+
+---
+
+## 📦 Step-by-Step Build Instructions
+
+### 1. Clone OpenROAD Flow Scripts
+
+```bash
+git clone https://github.com/The-OpenROAD-Project/OpenROAD-flow-scripts.git
+cd OpenROAD-flow-scripts
 
 ## Installation Steps
 
