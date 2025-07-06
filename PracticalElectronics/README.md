@@ -53,8 +53,8 @@ These experiments are part of my **Practical Electronics coursework at IIT Madra
 ## 🧑‍🔬 Author
 
 **Ram Tripathi**  
-Roll Number: 22HEL2231  
-B.Sc. in Electronics, IIT Madras (Online Degree Program)  
+Roll Number: 23F3000648  
+B.S. in Electronic Systems, IIT Madras (Online Degree Program)  
 
 ---
 
