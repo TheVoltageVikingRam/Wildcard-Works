@@ -8,13 +8,13 @@ Welcome to my portfolio showcasing hands-on experiments in **Practical Electroni
 
 ## 🎥 Experiment Videos
 
-### 1. **Diode Clipping Circuit**
+### 1. **EEC Week: Practical eelated to AC and DC excitation of Wheatstone bride**
 - 🔗 [Watch Video](https://youtu.be/u5hvhW2qX6E?si=_MFjjalNIW32h1WW)
-- 🔍 Description: Demonstration of diode-based clipping action in AC waveform, showcasing signal shaping using silicon diodes.
+- 🔍 Description: In this one a balanced and unbalanced whetstone bridge is constructed with its response to AC and DC excitation documented and at last a low pass filter is implemented. 
 
-### 2. **Zener Diode Voltage Regulation**
+### 2. **EEC Week 1: VTC characteristics of 74LS00 IC**
 - 🔗 [Watch Video](https://youtu.be/Yld1Y2n6Dgg?si=LufnDxu2FQCjHH8G)
-- 🔍 Description: Practical implementation of a zener diode voltage regulator and observation of clamping action under load.
+- 🔍 Description: Related to VTC characteristicsof 74LS00 (NAND Gate), clesrly it was my first video so not properly made with error slight inconsistency in editing. Thats why i put it later 😅.
 
 ---
 
