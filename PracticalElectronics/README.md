@@ -8,23 +8,23 @@ Welcome to my portfolio showcasing hands-on experiments in **Practical Electroni
 
 ## 🎥 Experiment Videos
 
-### 1. **EEC Week 2: Practical eelated to AC and DC excitation of Wheatstone bride**
+### 1. **EEC Week 2: Practical related to AC and DC excitation of Wheatstone bridge**
 - 🔗 [Watch Video](https://youtu.be/u5hvhW2qX6E?si=_MFjjalNIW32h1WW)
-- 🔍 Description: In this one a balanced and unbalanced whetstone bridge is constructed with its response to AC and DC excitation documented and at last a low pass filter is implemented. 
+- 🔍 Description: In this one a balanced and unbalanced Wheatstone bridge is constructed with its response to AC and DC excitation documented, and at last a low pass filter is implemented. 
 
 ### 2. **EEC Week 1: VTC characteristics of 74LS00 IC**
 - 🔗 [Watch Video](https://youtu.be/Yld1Y2n6Dgg?si=LufnDxu2FQCjHH8G)
-- 🔍 Description: Related to VTC characteristicsof 74LS00 (NAND Gate), clesrly it was my first video so not properly made with error slight inconsistency in editing. Thats why i put it later 😅.
+- 🔍 Description: Related to VTC characteristics of 74LS00 (NAND Gate), clearly it was my first video so not properly made with slight inconsistency in editing. That’s why I put it later 😅.
+
+### 3. **Week3: 4_Bit_Up_Counter_and_Down_counter_with_different_clock_Source_using_74LS163**
+- 🔗 [Watch Video](https://youtu.be/4WtVYkl5LJs)
+- 🔍 Description: Demonstration of 4-bit up and down counting using 74LS163 IC with variation in external clock sources to understand synchronous counting and clocking behavior.
 
 ---
 
 ## ⌛ Upcoming Experiments (Placeholders)
 
 These videos will be added as experiments are completed.
-
-### 3. **[Experiment Title Placeholder]**
-- 🔗 *Video link coming soon*
-- 🔍 *Description to be updated.*
 
 ### 4. **[Experiment Title Placeholder]**
 - 🔗 *Video link coming soon*
