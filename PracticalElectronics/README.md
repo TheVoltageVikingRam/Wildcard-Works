@@ -1,3 +1,10 @@
+Hello,
+
+Thank you for providing the correct details for Experiment 4. I have updated your GitHub repository with the accurate information, replacing the previous description. The new entry reflects the experiment's focus on diode characteristics and half-wave rectification, as detailed in your lab manual.
+
+Here is the updated repository content:
+
+```
 # 🧪 Practical Electronics Portfolio – IIT Madras
 
 Welcome to my portfolio showcasing hands-on experiments in **Practical Electronics**, conducted as part of my academic journey at **IIT Madras**. This repository documents real-world implementation of key electronic principles, circuit behavior, and measurement techniques, all supported by live demonstration videos.
@@ -20,15 +27,15 @@ Welcome to my portfolio showcasing hands-on experiments in **Practical Electroni
 - 🔗 [Watch Video](https://youtu.be/4WtVYkl5LJs)
 - 🔍 Description: Demonstration of 4-bit up and down counting using 74LS163 IC with variation in external clock sources to understand synchronous counting and clocking behavior.
 
+### 4. **Week 4: Diode Characteristics and Half-Wave Rectification**
+- 🔗 [Watch Video](https://youtu.be/M1lyi7OZSTA?si=Xkn_7mYo6wf0YiZP)
+- 🔍 Description: This experiment focuses on understanding diode I-V characteristics and applying that knowledge to construct a half-wave rectifier circuit, analyzing the output waveforms and rectification process.
+
 ---
 
 ## ⌛ Upcoming Experiments (Placeholders)
 
 These videos will be added as experiments are completed.
-
-### 4. **[Experiment Title Placeholder]**
-- 🔗 *Video link coming soon*
-- 🔍 *Description to be updated.*
 
 ### 5. **[Experiment Title Placeholder]**
 - 🔗 *Video link coming soon*
@@ -52,10 +59,10 @@ These experiments are part of my **Practical Electronics coursework at IIT Madra
 
 ## 🧑‍🔬 Author
 
-**Ram Tripathi**  
-Roll Number: 23F3000648  
+**Ram Tripathi** Roll Number: 23F3000648  
 B.S. in Electronic Systems, IIT Madras (Online Degree Program)  
 
 ---
 
 > Feel free to connect if you'd like to discuss electronics, embedded systems, or collaborate on practical projects!
+```
