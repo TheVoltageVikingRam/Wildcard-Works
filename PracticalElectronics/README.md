@@ -1,10 +1,3 @@
-Hello,
-
-Thank you for providing the correct details for Experiment 4. I have updated your GitHub repository with the accurate information, replacing the previous description. The new entry reflects the experiment's focus on diode characteristics and half-wave rectification, as detailed in your lab manual.
-
-Here is the updated repository content:
-
-```
 # 🧪 Practical Electronics Portfolio – IIT Madras
 
 Welcome to my portfolio showcasing hands-on experiments in **Practical Electronics**, conducted as part of my academic journey at **IIT Madras**. This repository documents real-world implementation of key electronic principles, circuit behavior, and measurement techniques, all supported by live demonstration videos.
@@ -65,4 +58,3 @@ B.S. in Electronic Systems, IIT Madras (Online Degree Program)
 ---
 
 > Feel free to connect if you'd like to discuss electronics, embedded systems, or collaborate on practical projects!
-```
