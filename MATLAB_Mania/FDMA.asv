@@ -1,0 +1,68 @@
+clear all
+close
+clc
+samples=1000;
+nos=4; %number of users
+%modulating signal frequency in Hz
+mfreq=[30 40 50 60];
+%carrier frequency to the different users in Hz
+cfreq=[300 600 900 12000];
+%choose freq deviation
+freqdev=10;
+%generate modulating signal 
+t=linspace(0,1000,samples);
+parfor i=1:nos
+    m(i,:)= sin(2*pi*mfreq(1,i)*t)+2*sin(pi*4*t);
+end
+
+%generate  the modulated signal
+parfor i=1:nos
+    y(i,:)= fmmod(m(i,:),cfreq(1,i),10*cfreq(1,i),frqdev);
+end
+
+%pass the modulated signal through the channel
+ch_op=awgn(sum(y),0,'measured');
+%demodulate the recieved signal at the base station
+parfor i=1:nos
+    z(i,:)=fmdemod(y(1,:).cfreq(1,i),10*cfreq(1,i),freqdev);
+end
+
+%display the transmitted signal and recieved signal at the base station
+
+cp={'k','b','r','g','y', [.5 .6 .7], [.8 .2 .6],[.3 .2 .2]};
+
+%cell array of colors
+for i=1:nos
+    figure(1)
+    hold on
+    plot(y(1,:), 'ColorLimits',, c{i});
+    xlabel('time index');
+    ylabel('amplitude');
+    title('signal from different users combined in the channel');
+    figure
+    subplot(3,1,1)
+    plot(m(i,:))
+    %modulating signal
+    xlabel('time index');
+    ylabel('amplitude');
+    title('modulating signal from the user');
+    subplot(3,1,2)
+    plot(y(i,:), 'ColorLimits', C{i});
+
+    %modulated signal
+    xlabel('time index');
+    ylabel('amplitude');
+    title('Modulated signal from user');
+    subplot(3,1,3)
+    plot(z(i,:), 'color', C{i});
+
+    %demodulated signal
+    xlabel('time index');
+    ylabel('amplitude');
+    title('Demodulated signal from user at the base station');
+end
+figure
+plot(ch_op) % combination oif all modulated signals passed through the channel
+xlabel('time index');
+ylabel('amplitude');
+title('Signal after passing through the channel');

@@ -1,0 +1,75 @@
+clc;
+spread=[];
+Data=((rand(1,5))>.5)+0;
+Goldcode=((randi(1,10))>.5)+0;
+k=1;
+LD=length(Data);
+LG=length(Goldcode);
+for i=1:LD
+for j=1:LG
+    spread(1,k)=xor(Data(1,i), Goldcode(1,j));
+    k=k+1;
+end
+end
+spread
+%...............bit time..................
+
+figure
+Tb=10;
+Data_pulse = rectpulse(Data(1,:),10);
+subplot(3,1,1);
+stem(Data_pulse);
+ylabel('Original Bit Sequence');
+title('Trasmitted Message');
+Gold_pulse = rectpulse(Goldcode(1,:),10);
+subplot(3,1,2);
+stem(Gold_pulse);
+ylabel('Gold Code');
+%...............................
+spreaded_pulse = rectpulse(spread(1:0),10);
+subplot(3,1,3);
+stem(spreaded_pulse);
+ylabel('Spreaded Sequence')
+%............DEMODULATION TO GET ORIGINAL MESSAGE SIGNAL...............
+
+i=1;
+k=1;
+los= length(spread);
+while k < los
+    s=0;
+    for i=1:10
+     temp(1,j) = xor(spread(1,k), Goldcode(1,j));
+     k=k+1;
+     s=s+temp(1,j);
+    end
+    if(s==0)
+        b2(1,i) = 0;
+    else
+        b2(1,i) = 1;
+    end
+     i=i+1;
+end
+despreaded_siganl = b2;
+%-------------Plotting Despreaded Signal---------------
+
+figure
+pattern=[];
+for k=1:4
+ if b2(1,k)==0
+     sig=zeroes(1,10);
+ else
+     sig=ones(1,10);
+ end
+ pattern=[pattern sig]
+end
+subplot(3,1,1);
+stem(spreaded_pulse);
+ylabel('spreaded sequence');
+title('Recieved MESSAGE');
+Gold_pulse = rectpulse(Goldcode(1,:),10);
+subplot(3,1,2);
+stem(Gold_pulse);
+ylabel('Gold Code');
+subplot(3,1,3);
+stem(pattern);
+

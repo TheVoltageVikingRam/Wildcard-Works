@@ -1,0 +1,48 @@
+clc;
+clear;
+close all;
+
+step=2;
+fm=100;
+t=1;
+Am=2;
+
+t1=linspace(0,t,100);
+s1=5*Am/2*sin(2*pi*t1);
+s2=Am*triang(length(s1)).';
+
+y1=[];
+for i =1:step:length(t1)
+    y1=[y1 s1(i) s2(i)];
+end
+
+% --- PLOTTING ---
+figure; % Open a fresh figure window
+
+% Plot 1: Sine Wave
+subplot(3,1,1);
+stem(s1);
+xlabel('time');
+ylabel('amplitude');
+title('sine wave in discrete');
+ylim([min(s1)-1, max(s1)+1]);
+
+% Plot 2: Triangular Wave
+subplot(3,1,2);
+stem(s2);
+xlabel('time');
+ylabel('amplitude');
+title('triangular wave in discrete');
+ylim([min(s2)-1, max(s2)+1]);
+
+% Plot 3: Multiplexed Signal
+subplot(3,1,3);
+stem(y1);
+xlabel('time');
+ylabel('amplitude');
+title('multiplexed signal in discrete');
+ylim([min(y1)-1, max(y1)+1]);
+
+
+set(gcf, 'Color', 'w'); 
+set(findall(gcf, 'Type', 'axes'), 'Color', 'w', 'XColor', 'k', 'YColor', 'k');
