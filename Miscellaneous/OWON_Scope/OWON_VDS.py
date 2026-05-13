@@ -506,7 +506,7 @@ class Frame:
         Most-prevalent low and high voltage levels (Vbase, Vtop).
         Uses histogram to find the two dominant levels in a digital/periodic signal.
         """
-        pts = self._pts + 128           # shift to 0..255
+        pts = self._pts.astype(np.int16) + 128  # shift to 0..255
         counts = np.bincount(pts, minlength=256)
         mid = int(np.dot(counts, np.arange(256)) // len(pts))
         lo  = int(np.argmax(counts[:mid + 1])) - 128
@@ -1377,7 +1377,7 @@ class Oscilloscope:
 
     def _read_flash(self):
         with self._lock:
-            self._send(CMD.READ_FLASH, 1)
+            self._bulk_write(CMD.READ_FLASH.pack(1))
             buf = array('B', bytes(_FLASH_SIZE))
             self._bulk_read(buf, _FLASH_SIZE)
             return bytes(buf)
