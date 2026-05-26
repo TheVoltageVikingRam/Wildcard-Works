@@ -43,9 +43,9 @@ The debugging and fix process was done interactively with [Claude](https://claud
 ### 1. Download / Clone
 
 ```
-git clone https://github.com/<your-username>/GDS3D.git
+[git clone https://github.com/<your-username>/GDS3D.git](https://github.com/TheVoltageVikingRam/Wildcard-Works.git)
 ```
-
+Navigate to the GDS3D-improved folder
 Or download and extract the ZIP from GitHub.
 
 ### 2. Open the Launcher
