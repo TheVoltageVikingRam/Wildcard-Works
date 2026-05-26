@@ -21,7 +21,7 @@ All intellectual credit belongs to the original authors listed below.
 
 ### What this fork adds
 
-This fork was created by **ram01** after the original binary failed to run out-of-the-box on a modern Windows 11 machine.
+This fork I created after the original binary failed to run out-of-the-box on a modern Windows 11 machine.
 The debugging and fix process was done interactively with [Claude](https://claude.ai) (Anthropic) — a vibe-debugging session that diagnosed the working-directory issue, verified OpenGL compatibility, and produced a polished GUI launcher.
 
 **Changes made on top of [@trilomix/GDS3D](https://github.com/trilomix/GDS3D):**
