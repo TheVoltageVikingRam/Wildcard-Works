@@ -1,0 +1,139 @@
+*.tga
+*.bak
+*.o
+*.jpg
+*.d
+*.hmap
+*.dia
+*.dat
+
+win32/Release-XP/GDS3D.tlog/unsuccessfulbuild
+*.lastbuildstate
+
+*.iobj
+.DS_Store
+
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+## Build generated
+mac/build/
+mac/DerivedData/
+mac/GDS3D.*
+
+assembly/AC*.assembly
+assembly/BD*.assembly
+assembly/PC*.assembly
+assembly/PO*.assembly
+
+*.geo
+*.pro
+
+gds/BD*.gds
+gds/BG*.gds
+gds/PC*.gds
+gds/PO*.gds
+gds/LI*.gds
+
+RunWin32 -*.cmd 
+RunWin64 -*.cmd 
+
+techfiles/ac*.txt
+techfiles/bt*.txt
+techfiles/ip*.txt
+techfiles/pc*.txt
+techfiles/so*.txt
+techfiles/pc*.txt
+
+mac/GDS3D.app.dSYM/Contents/Info.plist
+mac/GDS3D.app.dSYM/Contents/Resources/DWARF/GDS3D
+mac/GDS3D.build/Debug/GDS3D.build/dgph
+mac/GDS3D.build/Debug/GDS3D.build/dgph~
+mac/GDS3D.build/Debug/GDS3D.build/Objects-normal/x86_64/GDS3D.LinkFileList
+mac/GDS3D.xcodeproj/project.xcworkspace/xcuserdata/bpigeard.xcuserdatad/UserInterfaceState.xcuserstate
+mac/GDS3D.xcodeproj/project.xcworkspace/xcuserdata/bpigeard.xcuserdatad/WorkspaceSettings.xcsettings
+mac/GDS3D.xcodeproj/xcuserdata/bpigeard.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist
+mac/GDS3D.xcodeproj/xcuserdata/bpigeard.xcuserdatad/xcschemes/xcschememanagement.plist
+/gds/circles.gds
+/gds/largeArray.gds
+/gds/digital-ic-example.gds
+/gds/circles.oas
+/gds/test.gds
+/gds/test-oasis.oas
+/gds/test-gds.oas
+/gds/test-gds.gds
+/gds/test
+/Gmsh_OutPut/POC1T.zip
+/Gmsh_OutPut/POC1.msh
+/Gmsh_OutPut/POC1/POC1.unv
+/Gmsh_OutPut/POC1/POC1.msh
+/Gmsh_OutPut/POC1/POC1.db
+/Gmsh_OutPut/Test_Thermique.txt
+/mac/._.DS_Store
+/win32/GDS3D.ipdb
+/TestCaseMeshError.msh
+/TestCaseMeshError.db
+/Test.zip
+/Test.msh
+/Test.geo.opt
+/Test-POC1.msh
+/RunWin32 - PCB_BDX4.bat
+/GDS3D.log
+
+# ── Windows / Visual Studio ──────────────────────────────────────────────
+# VS IDE state & Copilot snapshots
+win32/.vs/
+win32/.vs/**
+
+# Build intermediate object files
+win32/GDS3D/
+win32/Win32/
+win32/x64/Debug/
+win32/x64/Release/
+
+# VS project user-specific settings
+*.vcxproj.user
+*.user
+*.suo
+*.sdf
+*.opensdf
+*.VC.db
+*.VC.opendb
+
+# VS IntelliSense cache
+ipch/
+*.ipch
+
+# Debug symbols
+*.pdb
+*.ilk
+*.iobj
+*.ipdb
+
+# ── Gmsh / FEM output (keep folder, ignore generated files) ─────────────
+Gmsh_OutPut/*.geo
+Gmsh_OutPut/*.pro
+Gmsh_OutPut/*.msh
+Gmsh_OutPut/*.unv
+Gmsh_OutPut/*.db
+Gmsh_OutPut/*.zip
+
+# ── Launcher state ───────────────────────────────────────────────────────
+.launcher_recent
+
+# ── OS clutter ───────────────────────────────────────────────────────────
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
