@@ -27,6 +27,8 @@ The source file is [`solution1.c`](./solution1.c). The code below is synchronize
 
 <!-- SOURCE_CODE_START -->
 
+### `solution1.c`
+
 ```c
 #include <stdio.h>
 
