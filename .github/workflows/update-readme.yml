@@ -3,8 +3,7 @@ name: Update README source code
 on:
   push:
     paths:
-      - 'DSA_Prac/C_Practice/problem1/solution1.c'
-      - 'DSA_Prac/C_Practice/problem1/README.md'
+      - 'DSA_Prac/C_Practice/**'
       - '.github/workflows/update-readme.yml'
   workflow_dispatch:
 
@@ -19,39 +18,102 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
-      - name: Insert source code into README
+      - name: Synchronize solution files into READMEs
+        shell: bash
         run: |
           python3 - <<'PY'
           from pathlib import Path
+          import re
+          import sys
 
-          readme = Path("DSA_Prac/C_Practice/problem1/README.md")
-          source = Path("DSA_Prac/C_Practice/problem1/solution1.c")
+          base = Path("DSA_Prac/C_Practice")
 
-          text = readme.read_text()
-          code = source.read_text().rstrip()
+          start_marker = "<!-- SOURCE_CODE_START -->"
+          end_marker = "<!-- SOURCE_CODE_END -->"
 
-          start = "<!-- SOURCE_CODE_START -->"
-          end = "<!-- SOURCE_CODE_END -->"
+          if not base.exists():
+              raise SystemExit(f"Directory not found: {base}")
 
-          if start not in text or end not in text:
-              raise SystemExit("README source markers are missing.")
+          def solution_sort_key(path):
+              match = re.fullmatch(r"solution(\d+)\.c", path.name)
+              if match:
+                  return (0, int(match.group(1)), path.name.lower())
+              return (1, path.name.lower())
 
-          before, rest = text.split(start, 1)
-          _, after = rest.split(end, 1)
+          updated_count = 0
 
-          section = f"\n\n```c\n{code}\n```\n\n"
-          updated = before + start + section + end + after
+          for readme in sorted(base.rglob("README.md")):
+              folder = readme.parent
 
-          if updated != text:
-              readme.write_text(updated)
+              solutions = sorted(
+                  folder.glob("solution*.c"),
+                  key=solution_sort_key
+              )
+
+              # Process only folders containing solution files.
+              if not solutions:
+                  continue
+
+              text = readme.read_text(encoding="utf-8")
+
+              if (
+                  text.count(start_marker) != 1
+                  or text.count(end_marker) != 1
+                  or text.index(start_marker) > text.index(end_marker)
+              ):
+                  raise SystemExit(
+                      f"Missing or invalid source markers in {readme}"
+                  )
+
+              code_sections = []
+
+              for source in solutions:
+                  code = source.read_text(encoding="utf-8").rstrip()
+
+                  code_sections.append(
+                      f"### `{source.name}`\n\n"
+                      f"```c\n{code}\n```"
+                  )
+
+              generated = "\n\n".join(code_sections)
+
+              before, rest = text.split(start_marker, 1)
+              _, after = rest.split(end_marker, 1)
+
+              updated_text = (
+                  before
+                  + start_marker
+                  + "\n\n"
+                  + generated
+                  + "\n\n"
+                  + end_marker
+                  + after
+              )
+
+              if updated_text != text:
+                  readme.write_text(
+                      updated_text,
+                      encoding="utf-8"
+                  )
+                  print(f"Updated: {readme}")
+                  updated_count += 1
+              else:
+                  print(f"Already up to date: {readme}")
+
+          print(f"README files updated: {updated_count}")
           PY
 
-      - name: Commit updated README
+      - name: Commit updated READMEs
         run: |
           git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add DSA_Prac/C_Practice/problem1/README.md
-          git diff --cached --quiet || (
-            git commit -m "docs: sync problem1 solution into README" &&
+          git config user.email \
+            "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add DSA_Prac/C_Practice/
+
+          if ! git diff --cached --quiet; then
+            git commit -m "docs: synchronize C solutions into READMEs"
             git push
-          )
+          else
+            echo "All READMEs are already up to date."
+          fi
