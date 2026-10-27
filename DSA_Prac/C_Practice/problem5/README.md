@@ -38,6 +38,24 @@ The implementation is maintained in [`solution4.c`](./solution4.c).
 
 <!-- SOURCE_CODE_START -->
 
+### `solution5.c`
+
+```c
+#include <stdio.h>
+int main(void){
+    
+    int ingInd;
+    int ingredient[10];
+    int i;
+    for (i=0; i<10; i++){
+    scanf("%d", &ingredient[i]);
+    }
+    
+    scanf("%d", &ingInd);
+    printf("%d\n", ingredient[ingInd]);
+}
+```
+
 <!-- SOURCE_CODE_END -->
 
 ## Build and Run
