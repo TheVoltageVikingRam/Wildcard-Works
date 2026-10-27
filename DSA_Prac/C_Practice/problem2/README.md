@@ -19,6 +19,33 @@ The implementation is maintained in [`solution2.c`](./solution2.c). The code bel
 
 <!-- SOURCE_CODE_START -->
 
+### `solution2.c`
+
+```c
+#include <stdio.h>
+int passengerNum;
+float costgas;
+float topay;
+
+int main(void){
+// printf("Enter the number of passengers. \n");
+scanf("%d", &passengerNum);
+scanf("%f", &costgas);
+if (passengerNum==0)
+{
+    topay=costgas;
+    printf("%.2f", topay);
+}
+
+else {
+    topay=((costgas+1)/(passengerNum+1));
+    printf("%.2f", topay);
+}
+
+return 0;
+}
+```
+
 <!-- SOURCE_CODE_END -->
 
 ## Examples
