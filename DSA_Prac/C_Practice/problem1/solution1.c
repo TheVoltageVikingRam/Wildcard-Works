@@ -12,10 +12,13 @@ int main(void){
     scanf("%d", &numOfPlayers);
     
     for (i=0; i<(2*numOfPlayers) ; i++){
+        
         scanf("%d", &playerWeight);
+        
         if (i%2 == 0){
             weight_team1=weight_team1+playerWeight;
         }
+            
         else {
             weight_team2=weight_team2+playerWeight;
         }
