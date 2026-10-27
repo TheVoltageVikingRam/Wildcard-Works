@@ -1,11 +1,10 @@
-
 name: Update README source code
 
 on:
   push:
     paths:
-      - 'solution1.c'
-      - 'README.md'
+      - 'DSA_Prac/C_Practice/problem1/solution1.c'
+      - 'DSA_Prac/C_Practice/problem1/README.md'
       - '.github/workflows/update-readme.yml'
   workflow_dispatch:
 
@@ -25,8 +24,8 @@ jobs:
           python3 - <<'PY'
           from pathlib import Path
 
-          readme = Path("README.md")
-          source = Path("solution1.c")
+          readme = Path("DSA_Prac/C_Practice/problem1/README.md")
+          source = Path("DSA_Prac/C_Practice/problem1/solution1.c")
 
           text = readme.read_text()
           code = source.read_text().rstrip()
@@ -45,15 +44,14 @@ jobs:
 
           if updated != text:
               readme.write_text(updated)
-
           PY
 
       - name: Commit updated README
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add README.md
+          git add DSA_Prac/C_Practice/problem1/README.md
           git diff --cached --quiet || (
-            git commit -m "docs: sync solution1.c into README" &&
+            git commit -m "docs: sync problem1 solution into README" &&
             git push
           )
