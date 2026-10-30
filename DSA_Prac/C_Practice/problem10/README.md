@@ -79,6 +79,27 @@ The implementation is maintained in [`solution9.c`](./solution9.c).
 
 <!-- SOURCE_CODE_START -->
 
+### `solution10.c`
+
+```c
+#include <stdio.h>
+
+int main(void){
+    int expense;
+    scanf("%d", &expense);
+    int sumOfexpense=0;
+    sumOfexpense = sumOfexpense + expense;
+    
+    while (expense != (-1)){
+        scanf("%d", &expense);
+        sumOfexpense = sumOfexpense + expense;
+        
+    }
+    sumOfexpense = sumOfexpense + 1;
+    printf("%d", sumOfexpense);
+}
+```
+
 <!-- SOURCE_CODE_END -->
 
 ## Complexity Analysis
