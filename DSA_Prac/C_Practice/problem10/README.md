@@ -91,12 +91,14 @@ int main(void){
     sumOfexpense = sumOfexpense + expense;
     
     while (expense != (-1)){
-        scanf("%d", &expense);
-        sumOfexpense = sumOfexpense + expense;
         
+       
+        scanf("%d", &expense);
+        
+         sumOfexpense = sumOfexpense + expense;
     }
-    sumOfexpense = sumOfexpense + 1;
-    printf("%d", sumOfexpense);
+    
+    printf("%d", sumOfexpense+1);
 }
 ```
 
