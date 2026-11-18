@@ -5,19 +5,26 @@
 
 #include <stdio.h>
 
-int fibonacci(int);
+long double fibonacci(int);
 
 int main(void) {
-	int N, fib;
+	int N;
+	long double fib;
 	printf("Which fibnacci number would you like: ");
-	scanf("%d", &N);
+	if ( scanf("%d", &N) !=1 ){
+		fprintf(stderr, "Error: Invalid input. Please enter an integer.\n");
+		return 1;
+	}
+
+
+
 	if (N<=0) {
 	printf("%d number is not positive. Aborting!\n", N);
 
 	}
 	else {
 		fib = fibonacci(N);
-		printf("The %dth Fibonacci number is %d.\n", N, fib);
+		printf("The %dth Fibonacci number is %Lf.\n", N, fib);
 
 	}
 
@@ -26,12 +33,12 @@ int main(void) {
 }
 
 
-int fibonacci(int n) {
+long double fibonacci(int n) {
 	if (n==1) {
 
 	return 0;
 	}
-	else if (n==1) {
+	else if (n==2) {
 	return 1;
 
 	}
