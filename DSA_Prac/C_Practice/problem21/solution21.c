@@ -17,8 +17,8 @@ int sumOfDigits(int given_num){
 	if (given_num == 0){
 	    return 0;
 	}
-	else {
+
 	digit_sum = (given_num % 10) + sumOfDigits((given_num/10));
 	return digit_sum;
-}
+
 }
